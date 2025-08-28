@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  gap: 15px;
+}
+
+.date {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 120%;
+  text-transform: uppercase;
+  color: #3877ee;
+}
+
+.content {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+  color: #42567a;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 166px;
+  }
+  .date {
+    font-size: 16px;
+  }
+  .content {
+    font-size: 14px;
+    line-height: 145%;
+  }
+}

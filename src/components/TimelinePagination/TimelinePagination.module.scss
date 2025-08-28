@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 20px
+}
+
+.segments {
+  font-family: 'PT Sans ', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #42567A;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    gap: 11px
+  }
+  .controls {
+    gap: 8px
+  }
+}

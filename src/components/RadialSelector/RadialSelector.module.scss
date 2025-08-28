@@ -1,0 +1,80 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  width: 56px;
+  background-color: transparent;
+}
+
+.circle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #42567a;
+  border: 1px solid #303e5850;
+  font-family: 'PT Sans', sans-serif;
+  color: #42567a;
+  overflow: hidden;
+  cursor: pointer;
+  transition: width 0.5s ease, height 0.5s ease, border-radius 0.5s ease;
+}
+
+.circle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: #f4f5f9;
+  border-radius: 50%;
+  z-index: 0;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+}
+
+.active {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+
+.active::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.indexText {
+  position: relative;
+  z-index: 1;
+  font-size: 20px;
+  font-weight: 400;
+  color: #42567a;
+  opacity: 0;
+  background-color: transparent;
+  transition: opacity 0.25s ease;
+}
+
+.active .indexText {
+  opacity: 1;
+}
+
+.title {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #42567a;
+  margin-left: 20px;
+}

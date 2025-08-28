@@ -1,0 +1,34 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .swiper-pagination {
+    bottom: 10px;
+
+    .swiper-pagination-bullet {
+      width: 6px;
+      height: 6px;
+      background: #42567A;
+      opacity: 0.4;
+      transition: opacity 0.3s;
+      margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 5px);
+
+      &-active {
+        opacity: 1;
+        background: #42567A;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .swiper-slide {
+      opacity: 0.4;
+      transition: opacity 0.3s;
+
+      &.swiper-slide-active {
+        opacity: 1;
+      }
+    }
+  }
+}
