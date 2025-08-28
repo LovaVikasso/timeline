@@ -13,6 +13,7 @@
     content: '';
     position: absolute;
     background-color: #42567A10;
+    z-index: 11;
   }
 
   &::before {
@@ -37,7 +38,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
+  z-index: 1;
   background-color: transparent;
 }
 
@@ -46,5 +47,8 @@
 }
 
 .control {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
   padding: 0 78px;
 }

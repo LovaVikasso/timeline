@@ -3,86 +3,78 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import * as s from "./Circle.module.scss";
 import { Segment } from "@/types";
-import {RadialSelector} from "@/components/RadialSelector";
+import { RadialSelector } from "@/components/RadialSelector";
 
 type Props = {
     segments: Segment[];
-    total: number
+    total: number;
+    activeIndex: number;
+    setIndex: (index: number) => void;
 };
 
 gsap.registerPlugin(useGSAP);
 
-export const Circle = ({ segments, total }: Props) => {
+export const Circle = ({ segments, total, activeIndex, setIndex }: Props) => {
     const container = useRef<HTMLDivElement>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [prevActiveIndex, setPrevActiveIndex] = useState(0);
+    const [prevActiveIndex, setPrevActiveIndex] = useState(activeIndex);
 
     const radius = 265;
     const center = 265;
     const buttonSize = 56;
     const activeAngle = -Math.PI / 4;
+    const step = (2 * Math.PI) / total;
 
     useGSAP(
         () => {
             const items = gsap.utils.toArray<HTMLDivElement>(".circle-item");
 
-            items.forEach((el, i) => {
-                // Рассчитываем целевой угол для каждого элемента
-                const targetAngle =
-                    ((i - activeIndex + segments.length) % segments.length) *
-                    (2 * Math.PI / segments.length) +
-                    activeAngle;
+            // вычисляем общий signed сдвиг (в радианах) для всей группы:
+            // rawAngleDiff в [0, 2π)
+            const rawAngleDiff =
+                ((activeIndex - prevActiveIndex + total) % total) * step;
 
-                // Рассчитываем целевую позицию на окружности
-                const targetX = Math.cos(targetAngle) * radius + center - buttonSize / 2;
-                const targetY = Math.sin(targetAngle) * radius + center - buttonSize / 2;
+            // signedAngleShift — кратчайшее смещение, с правильным знаком,
+            // которое приведёт активный элемент из startAngle в targetAngle
+            const signedAngleShift =
+                rawAngleDiff <= Math.PI ? -rawAngleDiff : 2 * Math.PI - rawAngleDiff;
+
+            items.forEach((el, i) => {
+                const targetAngle =
+                    ((i - activeIndex + total) % total) * step + activeAngle;
+
+                const targetX =
+                    Math.cos(targetAngle) * radius + center - buttonSize / 2;
+                const targetY =
+                    Math.sin(targetAngle) * radius + center - buttonSize / 2;
 
                 if (activeIndex !== prevActiveIndex) {
-                    // Если это анимация перехода, анимируем движение по дуге
-
-                    // Рассчитываем начальный угол
+                    // анимация перехода — остаётся по той же логике, но использует
+                    // signedAngleShift (единую величину для всех элементов)
                     const startAngle =
-                        ((i - prevActiveIndex + segments.length) % segments.length) *
-                        (2 * Math.PI / segments.length) +
-                        activeAngle;
+                        ((i - prevActiveIndex + total) % total) * step + activeAngle;
 
-                    // Создаем анимацию движения по дуге
-                    const steps = 30; // количество шагов для плавной дуги
-                    const points = [];
-
-                    // Вычисляем направление движения (по часовой или против)
-                    const angleDiff = ((activeIndex - prevActiveIndex + segments.length) % segments.length) *
-                        (2 * Math.PI / segments.length);
-                    const direction = angleDiff > Math.PI ? -1 : 1;
-
-                    // Создаем точки для движения по дуге
-                    for (let j = 0; j <= steps; j++) {
-                        const progress = j / steps;
-                        const currentAngle = startAngle + angleDiff * progress * direction;
-
-                        const x = Math.cos(currentAngle) * radius + center - buttonSize / 2;
-                        const y = Math.sin(currentAngle) * radius + center - buttonSize / 2;
-
-                        points.push({ x, y });
-                    }
-
-                    // Анимируем движение по точкам дуги
+                    const steps = 30;
                     const timeline = gsap.timeline();
 
-                    points.forEach((point, index) => {
-                        timeline.to(el, {
-                            x: point.x,
-                            y: point.y,
-                            duration: 1 / steps,
-                            ease: "sine.inOut"
-                        }, index * (1 / steps));
-                    });
+                    for (let j = 0; j <= steps; j++) {
+                        const progress = j / steps;
+                        const currentAngle = startAngle + signedAngleShift * progress;
+
+                        const x =
+                            Math.cos(currentAngle) * radius +
+                            center -
+                            buttonSize / 2;
+                        const y =
+                            Math.sin(currentAngle) * radius +
+                            center -
+                            buttonSize / 2;
+
+                        const speedFactor = 1.5;
+                        timeline.to(el, { x, y, duration: (1 / steps) / speedFactor, ease: "sine.inOut" }, j * (1 / steps) / speedFactor);
+                    }
                 } else {
-                    // Просто устанавливаем позицию без анимации
-                    gsap.set(el, {
-                        x: targetX,
-                        y: targetY
-                    });
+                    // без анимации
+                    gsap.set(el, { x: targetX, y: targetY });
                 }
             });
 
@@ -107,7 +99,7 @@ export const Circle = ({ segments, total }: Props) => {
                     top: 0,
                     left: 0,
                     pointerEvents: "none",
-                    zIndex: 1
+                    zIndex: 1,
                 }}
             >
                 <circle
@@ -133,9 +125,13 @@ export const Circle = ({ segments, total }: Props) => {
                             background: "transparent",
                             zIndex: isActive ? 3 : 2,
                         }}
-                        onClick={() => setActiveIndex(i)}
+                        onClick={() => setIndex(i)}
                     >
-                        <RadialSelector isActive={isActive} index={i} title={seg.title} />
+                        <RadialSelector
+                            isActive={isActive}
+                            index={i}
+                            title={seg.title}
+                        />
                     </div>
                 );
             })}

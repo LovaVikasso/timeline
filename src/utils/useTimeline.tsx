@@ -1,28 +1,35 @@
 import { Segment } from "@/types";
 import { useState } from "react";
+
 /**
- * Hook for managing timeline segments
+ * Hook for managing timeline segments by index
  * @param segments - array of segments with events
  * @returns Object with state and control methods:
  *   - activeSegment: currently active segment
- *   - activeSegmentId: ID of active segment (starts from 0)
+ *   - activeIndex: index of active segment
  *   - totalSegments: total number of segments
- *   - setActiveSegmentId: set active segment by ID
+ *   - goTo: select segment by index
  *   - next: switch to next segment
  *   - prev: switch to previous segment
  *
  * @example
- * const { activeSegment, activeSegmentId, totalSegments, next, prev } = useTimeline(segments);
+ * const { activeSegment, activeIndex, totalSegments, next, prev, goTo } = useTimeline(segments);
  */
 export const useTimeline = (segments: Segment[]) => {
-    const [activeSegmentId, setActiveSegmentId] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const goTo = (index: number) => {
+        if (index >= 0 && index < segments.length) {
+            setActiveIndex(index);
+        }
+    };
 
     return {
-        activeSegment: segments[activeSegmentId],
-        activeSegmentId,
+        activeSegment: segments[activeIndex],
+        activeIndex,
         totalSegments: segments.length,
-        setActiveSegmentId,
-        next: () => setActiveSegmentId(prev => Math.min(prev + 1, segments.length - 1)),
-        prev: () => setActiveSegmentId(prev => Math.max(prev - 1, 0))
+        goTo,
+        next: () => setActiveIndex((prev) => Math.min(prev + 1, segments.length - 1)),
+        prev: () => setActiveIndex((prev) => Math.max(prev - 1, 0)),
     };
 };

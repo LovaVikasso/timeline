@@ -49,7 +49,7 @@ export const segments: Segment[] = [
         id: 2,
         index: 1,
         title: "Литература",
-        startYear: 1993,
+        startYear: 1985,
         endYear: 2023,
         events: [
             {
@@ -93,8 +93,8 @@ export const segments: Segment[] = [
         id: 3,
         index: 2,
         title: "Кино",
-        startYear: 2001,
-        endYear: 2025,
+        startYear: 1998,
+        endYear: 2024,
         events: [
             {
                 id: 17,
@@ -127,8 +127,8 @@ export const segments: Segment[] = [
         id: 4,
         index: 3,
         title: "Театр",
-        startYear: 1992,
-        endYear: 2025,
+        startYear: 1990,
+        endYear: 2024,
         events: [
             {
                 id: 22,
@@ -171,8 +171,8 @@ export const segments: Segment[] = [
         id: 5,
         index: 4,
         title: "Технологии",
-        startYear: 1992,
-        endYear: 2025,
+        startYear: 1995,
+        endYear: 2026,
         events: [
             {
                 id: 29,
@@ -215,7 +215,7 @@ export const segments: Segment[] = [
         id: 6,
         index: 5,
         title: "Искусство",
-        startYear: 1992,
+        startYear: 1995,
         endYear: 2025,
         events: [
             {
