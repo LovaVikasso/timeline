@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 .wrapper {
   display: flex;
   gap: 78px;
@@ -7,7 +9,7 @@
 .line {
   height: 120px;
   width: 5px;
-  background: linear-gradient(180deg, #3877EE 0%, #EF5DAB 100%);
+  background: $gradient-primary;
 }
 
 .text {
@@ -15,17 +17,13 @@
   font-family: 'PT Sans', sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 56px;
+  font-size: $title-font-fluid;
   line-height: 120%;
-  color: #42567A;
+  color: $color-primary;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $bp-mobile) {
   .text {
-    font-size: 20px;
     max-width: 166px;
   }
 }
-
-
-

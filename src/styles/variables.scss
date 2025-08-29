@@ -1,1 +1,22 @@
-$borderColor: #42567A;
+$color-primary: #42567a;
+$color-primary-10: #42567a10;
+$color-divider: #c7cdd9;
+$gradient-primary: linear-gradient(180deg, #3877ee 0%, #ef5dab 100%);
+
+$bp-mobile: 768px;
+
+// Typography
+$title-font-desktop: 56px;
+$title-font-mobile: 20px;
+$title-font-fluid: clamp($title-font-mobile, 4vw + 1rem, $title-font-desktop);
+
+// Accents (date range)
+$color-accent-start: #5d5fef;
+$color-accent-end: #ef5da8;
+$date-font-desktop: 200px;
+$date-lineheight-desktop: 160px;
+$date-font-mobile: 56px;
+$date-lineheight-mobile: 73px;
+
+// Backward compat
+$borderColor: $color-primary;

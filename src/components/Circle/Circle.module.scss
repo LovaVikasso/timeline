@@ -17,12 +17,6 @@
     justify-content: center;
   }
 
-  .circle-title {
-    white-space: nowrap;
-    font-size: 14px;
-    color: #333;
-  }
-
   .circleBorder {
     position: absolute;
     top: 0;
@@ -31,12 +25,10 @@
   }
 }
 .circle-item {
-  // Убедитесь, что элементы не имеют фона и границ
   background: transparent;
   border: none;
   width: 56px;
   height: 56px;
-  // Только необходимые размеры для содержимого
   display: inline-flex;
   align-items: center;
   justify-content: center;
