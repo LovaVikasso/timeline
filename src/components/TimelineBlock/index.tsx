@@ -9,12 +9,16 @@ import { Carousel } from '@/components/Carousel';
 import { useMediaQuery } from '@/utils/useMediaQuery';
 import { Circle } from '@/components/Circle';
 import { CategoryTitle } from '@/components/CategoryTitle';
+import {Segment} from "@/types";
 import * as s from './TimelineBlock.module.scss';
 
-export const TimelineBlock = () => {
+type Props = {
+  data: Segment[]
+}
+export const TimelineBlock = ({data}:Props) => {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const { activeSegment, activeIndex, totalSegments, next, prev, goTo } =
-    useTimeline(segments);
+    useTimeline(data);
   const { startYear, endYear } = activeSegment;
 
   const carouselRef = useRef<HTMLDivElement>(null);
