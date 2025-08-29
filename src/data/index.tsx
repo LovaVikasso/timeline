@@ -5,19 +5,9 @@ export const segments: Segment[] = [
         id: 1,
         index: 0,
         title: "Наука",
-        startYear: 1992,
-        endYear: 2025,
+        startYear: 2002,
+        endYear: 2019,
         events: [
-            {
-                id: 1,
-                year: 1995,
-                text: "Открытие первой экзопланеты у звезды главной последовательности 51 Пегаса"
-            },
-            {
-                id: 2,
-                year: 1997,
-                text: "Клонирование овцы Долли — первого млекопитающего, клонированного из соматической клетки"
-            },
             {
                 id: 3,
                 year: 2001,
@@ -42,6 +32,11 @@ export const segments: Segment[] = [
                 id: 7,
                 year: 2020,
                 text: "Разработка первых mRNA-вакцин против COVID-19 компаниями Pfizer и Moderna"
+            },
+            {
+                id: 44,
+                year: 2008,
+                text: "Запуск Большого адронного коллайдера - самого мощного ускорителя частиц в мире"
             }
         ]
     },
@@ -49,19 +44,9 @@ export const segments: Segment[] = [
         id: 2,
         index: 1,
         title: "Литература",
-        startYear: 1985,
+        startYear: 2005,
         endYear: 2023,
         events: [
-            {
-                id: 8,
-                year: 1993,
-                text: "Тони Моррисон становится первой афроамериканкой, получившей Нобелевскую премию по литературе"
-            },
-            {
-                id: 9,
-                year: 1997,
-                text: "Дж. К. Роулинг публикует «Гарри Поттера и философский камень», начало мировой phenomenon"
-            },
             {
                 id: 10,
                 year: 2003,
@@ -86,6 +71,11 @@ export const segments: Segment[] = [
                 id: 14,
                 year: 2023,
                 text: "Джон Фанте «Полное собрание рассказов» публикуется посмертно, возрождая интерес к творчеству автора"
+            },
+            {
+                id: 45,
+                year: 2007,
+                text: "Последняя книга о Гарри Поттере «Гарри Поттер и Дары Смерти» устанавливает рекорды продаж"
             }
         ]
     },
@@ -93,7 +83,7 @@ export const segments: Segment[] = [
         id: 3,
         index: 2,
         title: "Кино",
-        startYear: 1998,
+        startYear: 2000,
         endYear: 2024,
         events: [
             {
@@ -120,6 +110,11 @@ export const segments: Segment[] = [
                 id: 21,
                 year: 2023,
                 text: "«Оппенгеймер» Кристофера Нолана собирает более $950 миллионов в мировом прокате"
+            },
+            {
+                id: 46,
+                year: 2015,
+                text: "«Безумный Макс: Дорога ярости» получает 6 Оскаров и возрождает франшизу"
             }
         ]
     },
@@ -127,14 +122,9 @@ export const segments: Segment[] = [
         id: 4,
         index: 3,
         title: "Театр",
-        startYear: 1990,
-        endYear: 2024,
+        startYear: 2006,
+        endYear: 2022,
         events: [
-            {
-                id: 22,
-                year: 1996,
-                text: "Бродвейская премьера мюзикла «Король Лев» по мотивам диснеевского мультфильма"
-            },
             {
                 id: 23,
                 year: 2001,
@@ -171,14 +161,9 @@ export const segments: Segment[] = [
         id: 5,
         index: 4,
         title: "Технологии",
-        startYear: 1995,
-        endYear: 2026,
+        startYear: 2004,
+        endYear: 2023,
         events: [
-            {
-                id: 29,
-                year: 1998,
-                text: "Основание компании Google Ларри Пейджем и Сергеем Брином в гараже"
-            },
             {
                 id: 30,
                 year: 2001,
@@ -215,7 +200,7 @@ export const segments: Segment[] = [
         id: 6,
         index: 5,
         title: "Искусство",
-        startYear: 1995,
+        startYear: 2003,
         endYear: 2025,
         events: [
             {
@@ -242,11 +227,6 @@ export const segments: Segment[] = [
                 id: 41,
                 year: 2021,
                 text: "NFT-искусство становится мейнстримом, работа Бипла продана за $69 миллионов"
-            },
-            {
-                id: 42,
-                year: 2022,
-                text: "Вандалы атакуют «Девушку с жемчужной серёжкой» Вермеера в музее Маурицхёйс"
             },
             {
                 id: 43,

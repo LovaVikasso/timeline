@@ -100,6 +100,7 @@ export const Circle = ({ segments, total, activeIndex, setIndex }: Props) => {
                     left: 0,
                     pointerEvents: "none",
                     zIndex: 1,
+                    backgroundColor: "transparent",
                 }}
             >
                 <circle

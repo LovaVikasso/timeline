@@ -1,6 +1,7 @@
 import React from "react";
 import * as s from "./RadialSelector.module.scss";
 import {useHoverState} from "@/utils/useHoverState";
+import {CategoryTitle} from "@/components/CategoryTitle";
 
 type Props = {
     isActive: boolean;
@@ -9,8 +10,8 @@ type Props = {
     onClick?: () => void;
 };
 
-export const RadialSelector = ({ isActive, index, title, onClick }: Props) => {
-    const { isHovered, onMouseEnter, onMouseLeave } = useHoverState();
+export const RadialSelector = ({isActive, index, title, onClick}: Props) => {
+    const {isHovered, onMouseEnter, onMouseLeave} = useHoverState();
     const showActiveState = isActive || isHovered;
 
     return (
@@ -22,13 +23,13 @@ export const RadialSelector = ({ isActive, index, title, onClick }: Props) => {
         >
             <div className={s.content}>
                 <button
-                className={`${s.circle} ${showActiveState ? s.active : ""}`}
-            >
-                <span className={s.indexText}>{index + 1}</span>
-            </button>
+                    className={`${s.circle} ${showActiveState ? s.active : ""}`}
+                >
+                    <span className={s.indexText}>{index + 1}</span>
+                </button>
 
             </div>
-            {isActive && <span className={s.title}>{title}</span>}
+            {isActive && title && <CategoryTitle title={title}/>}
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, { ReactNode, ButtonHTMLAttributes } from 'react';
+import React, {ButtonHTMLAttributes, ReactNode} from 'react';
 import * as s from "./Button.module.scss";
 
 type Props = {
@@ -6,12 +6,13 @@ type Props = {
     variant?: 'default' | 'transparent';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button = ({ children, variant = 'default', ...props }: Props) => {
-    const className =
-        variant === 'transparent' ? s.buttonTransparent : s.button;
+export const Button = ({ children, variant = 'default', className: extraClass, ...props }: Props) => {
+    const btnClass = variant === 'transparent'
+        ? `${s.button} ${s.buttonTransparent}`
+        : s.button;
 
     return (
-        <button className={className} {...props}>
+        <button className={`${btnClass} ${extraClass ?? ''}`} {...props}>
             {children}
         </button>
     );

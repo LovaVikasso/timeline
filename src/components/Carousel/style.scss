@@ -2,9 +2,12 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 78px;
 
   .swiper-pagination {
-    bottom: 10px;
+    position: static;
 
     .swiper-pagination-bullet {
       width: 6px;
@@ -21,14 +24,44 @@
     }
   }
 
-  @media (max-width: 768px) {
-    .swiper-slide {
-      opacity: 0.4;
-      transition: opacity 0.3s;
 
-      &.swiper-slide-active {
-        opacity: 1;
-      }
+}
+
+@media (max-width: 768px) {
+  .swiper {
+    gap: 58px;
+  }
+  .swiper-pagination {
+    position: static;
+    margin-bottom: 10px;
+  }
+  .swiper-slide {
+    opacity: 0.4;
+    transition: opacity 0.3s;
+
+    &.swiper-slide-active {
+      opacity: 1;
+    }
+  }
+}
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    &.left {
+      left: -60px;
+    }
+
+    &.right {
+      right: -60px;
     }
   }
 }
